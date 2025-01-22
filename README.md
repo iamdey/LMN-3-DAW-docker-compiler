@@ -36,3 +36,9 @@ docker run  -v $PWD:/source dey/lmn-3-daw_compiler:0.1.x_armv7 /bin/bash -c '
   cmake --build build -j8
   '
 ```
+
+## Copyright
+
+This repository has been heavily inspired by
+https://github.com/FundamentalFrequency/juce-arm-linux-cross-compiler by Stone
+Preston.

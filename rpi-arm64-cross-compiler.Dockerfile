@@ -1,4 +1,4 @@
-FROM --platform=linux/arm/64 dtcooper/raspberrypi-os:bullseye as sysroot
+FROM --platform=linux/arm64 dtcooper/raspberrypi-os:bullseye as sysroot
 
 # install dependencies for juce
 RUN apt update && apt install -y --no-install-recommends \

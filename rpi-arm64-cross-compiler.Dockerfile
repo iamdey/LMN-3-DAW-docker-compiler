@@ -32,6 +32,28 @@ RUN apt update && apt install -y --no-install-recommends \
 
 FROM lmn-3-base
 
+# Install x86_64 dependencies so pkg-config stops being annoying
+# (I've tried to set `PKG_CONFIG_PATH` but it's not enough)
+# (It seems the compiler doesn't care if it's not the same architecture)
+RUN apt update && apt install -y --no-install-recommends \
+    # juce dependencies
+    ladspa-sdk \
+    libasound2-dev \
+    libcurl4-openssl-dev  \
+    libfreetype6-dev \
+    libglu1-mesa-dev \
+    libjack-jackd2-dev \
+    libx11-dev \
+    libxcomposite-dev \
+    libxcursor-dev \
+    libxext-dev \
+    libxinerama-dev \
+    libxrandr-dev \
+    libxrender-dev \
+    libwebkit2gtk-4.0-dev \
+    mesa-common-dev \
+    && rm -rf /var/lib/apt/lists/*
+
 RUN apt update && apt install -y --no-install-recommends \
     curl\
     # required by clang to when used with sysroot

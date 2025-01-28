@@ -52,7 +52,7 @@ RUN chmod +x ./sysroot-relativelinks.py
 RUN ./sysroot-relativelinks.py /toolchain/sysroot
 
 # Set the directory to retrieve library metadata for clang
-ENV PKG_CONFIG_PATH /toolchain/sysroot/usr/lib/arm-linux-gnueabihf/pkgconfig
+ENV PKG_CONFIG_PATH /toolchain/sysroot/usr/lib/aarch64-linux-gnu/pkgconfig
 
 WORKDIR /toolchain
-COPY ./rpi-toolchain.cmake ./toolchain.cmake
+COPY ./rpi-arm64-toolchain.cmake ./toolchain.cmake

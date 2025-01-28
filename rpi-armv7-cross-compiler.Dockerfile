@@ -77,4 +77,4 @@ RUN ./sysroot-relativelinks.py /toolchain/sysroot
 ENV PKG_CONFIG_PATH /toolchain/sysroot/usr/lib/arm-linux-gnueabihf/pkgconfig
 
 WORKDIR /toolchain
-COPY ./rpi-toolchain.cmake ./toolchain.cmake
+COPY ./rpi-armv7-toolchain.cmake ./toolchain.cmake

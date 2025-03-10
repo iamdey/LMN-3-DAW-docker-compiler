@@ -11,11 +11,11 @@ https://github.com/FundamentalFrequency/LMN-3-DAW). This can be used on a host
 without invasive dependencies or in a CI. The following containers will compile
 binaries for those target plateforms:
 
-| images                           | target arch | target os                         |
-| -------------------------------- | ----------- | --------------------------------- |
-| iamdey/lmn-3-daw_compiler:armv7  | armv7       | Raspberry Pi OS 32bits (bullseye) |
-| iamdey/lmn-3-daw_compiler:arm64  | arm64       | Raspberry Pi OS 64bits (bullseye) |
-| iamdey/lmn-3-daw_compiler:x86_64 | x86_64      | Ubuntu 64bits (22.04)             |
+| images                          | target arch | target os                         |
+| ------------------------------- | ----------- | --------------------------------- |
+| iamdey/lmn-3-daw_compiler:armv7 | armv7       | Raspberry Pi OS 32bits (bullseye) |
+| iamdey/lmn-3-daw_compiler:arm64 | arm64       | Raspberry Pi OS 64bits (bullseye) |
+| iamdey/lmn-3-daw_compiler:amd64 | amd64       | Ubuntu 64bits (22.04)             |
 
 > Note: Target OS is an indication on which OS LMN-3 will run and the minimum
 > version required of glibc dependency.
@@ -37,7 +37,7 @@ According to the target and version of LMN-3-DAW:
 
 ```bash
 cd LMN-3-DAW
-docker run  -v $PWD:/source iamdey/lmn-3-daw_compiler:armv7 /bin/bash -c '
+docker run --rm -v $PWD:/source iamdey/lmn-3-daw_compiler:armv7 /bin/bash -c '
   cd /source
   cmake -B build -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang -DCMAKE_BUILD_TYPE=Debug -DPACKAGE_TESTS=OFF
   cmake --build build -j8

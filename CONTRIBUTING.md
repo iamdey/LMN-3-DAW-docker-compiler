@@ -37,6 +37,15 @@ docker push iamdey/lmn-3-daw-docker-compiler:<target-arch>
 docker push iamdey/lmn-3-daw-docker-compiler:<target-arch>-<daw-min-version>
 ```
 
+And tag the git repository:
+
+```bash
+git tag daw-<daw-min-version>
+git push --tags
+```
+
+e.g. `daw-0.2.x`
+
 ## Ref
 
 <span id="#1">

@@ -4,8 +4,9 @@ This is mostly an entry point to explain the release procedure.
 
 ## Pre-requisite
 
-It's necessary to have write access on the [docker repository](). Eventually ask
-@iamdey for it.
+It's necessary to have write access on the
+[docker repository](https://hub.docker.com/r/iamdey/lmn-3-daw-docker-compiler).
+Eventually ask @iamdey for it.
 
 ## Tag a new image
 

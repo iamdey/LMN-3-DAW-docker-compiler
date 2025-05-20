@@ -13,7 +13,7 @@ binaries for those target plateforms:
 
 | images                          | target arch | target os                         |
 | ------------------------------- | ----------- | --------------------------------- |
-| iamdey/lmn-3-daw_compiler:armv7 | armv7       | Raspberry Pi OS 32bits (bullseye) |
+| iamdey/lmn-3-daw_compiler:armv7 | armv7       | Raspberry Pi OS 32bits (bookworm) |
 | iamdey/lmn-3-daw_compiler:arm64 | arm64       | Raspberry Pi OS 64bits (bullseye) |
 | iamdey/lmn-3-daw_compiler:amd64 | amd64       | Ubuntu 64bits (22.04)             |
 

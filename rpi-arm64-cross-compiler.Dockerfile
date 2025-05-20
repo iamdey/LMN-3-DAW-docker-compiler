@@ -1,7 +1,7 @@
-FROM --platform=linux/arm64 dtcooper/raspberrypi-os:bullseye as sysroot
+FROM --platform=linux/arm64 dtcooper/raspberrypi-os:bookworm as sysroot
 
 # install dependencies for juce
-RUN apt update && apt install -y --no-install-recommends \
+RUN apt update && apt upgrade -y && apt install -y --no-install-recommends \
     build-essential \
     ca-certificates \
     clang \
@@ -28,6 +28,8 @@ RUN apt update && apt install -y --no-install-recommends \
     libxrender-dev \
     libwebkit2gtk-4.0-dev \
     mesa-common-dev \
+    # tracktion deps
+    libc6-dev-arm64-cross \
     && rm -rf /var/lib/apt/lists/*
 
 FROM lmn-3-base
@@ -35,7 +37,7 @@ FROM lmn-3-base
 # Install x86_64 dependencies so pkg-config stops being annoying
 # (I've tried to set `PKG_CONFIG_PATH` but it's not enough)
 # (It seems the compiler doesn't care if it's not the same architecture)
-RUN apt update && apt install -y --no-install-recommends \
+RUN apt update && apt upgrade -y && apt install -y --no-install-recommends \
     # juce dependencies
     ladspa-sdk \
     libasound2-dev \
@@ -52,6 +54,8 @@ RUN apt update && apt install -y --no-install-recommends \
     libxrender-dev \
     libwebkit2gtk-4.0-dev \
     mesa-common-dev \
+    # tracktion deps
+    libc6-dev-arm64-cross \
     && rm -rf /var/lib/apt/lists/*
 
 RUN apt update && apt install -y --no-install-recommends \
@@ -63,8 +67,8 @@ RUN apt update && apt install -y --no-install-recommends \
 
 # Prepare sysroot
 COPY --from=sysroot /bin /toolchain/sysroot/bin
-COPY --from=sysroot /lib /toolchain/sysroot/lib
 COPY --from=sysroot /usr/lib /toolchain/sysroot/usr/lib
+RUN ln -s /toolchain/sysroot/usr/lib /toolchain/sysroot/lib
 COPY --from=sysroot /usr/include /toolchain/sysroot/usr/include
 
 # Fix symlinks

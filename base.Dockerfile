@@ -3,7 +3,7 @@ FROM ubuntu:22.04 as base
 ARG DEBIAN_FRONTEND=noninteractive
 ENV TZ=America/Chicago
 
-RUN apt-get update && apt-get install -y --no-install-recommends \
+RUN apt-get update && apt upgrade -y && apt-get install -y --no-install-recommends \
     build-essential \
     ca-certificates \
     clang \
